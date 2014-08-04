@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wnh-zH-Ekz">
+    <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+    </dependencies>
+    <scenes>
+        <!--Vault Items-->
+        <scene sceneID="ZOG-YV-FCX">
+            <objects>
+                <tableViewController id="kp0-s6-F5L" customClass="StorListVaultItemViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ce8-n7-meF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="StorVaultItemCellIdentifier" rowHeight="70" id="sR5-v6-EwY" customClass="StorVaultItemCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sR5-v6-EwY" id="7AE-Ha-52C">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHG-KE-f5S">
+                                            <rect key="frame" x="27" y="8" width="203" height="21"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Position" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fi-Y1-BKu">
+                                            <rect key="frame" x="27" y="25" width="203" height="21"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgU-nN-Rti">
+                                            <rect key="frame" x="210" y="8" width="73" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="73" id="9Ry-Ff-Si5"/>
+                                                <constraint firstAttribute="height" constant="21" id="XKi-rp-k0d"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asu-6x-jZ2">
+                                            <rect key="frame" x="238" y="27" width="45" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="45" id="aeJ-K1-LYd"/>
+                                                <constraint firstAttribute="height" constant="21" id="nEQ-Rk-E9P"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nicknames" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65B-Dy-oYA">
+                                            <rect key="frame" x="27" y="42" width="260" height="21"/>
+                                            <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="13"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="asu-6x-jZ2" secondAttribute="trailing" constant="4" id="3xK-0T-ZO4"/>
+                                        <constraint firstItem="asu-6x-jZ2" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="top" constant="26" id="IJR-Q3-X9u"/>
+                                        <constraint firstAttribute="trailing" secondItem="qgU-nN-Rti" secondAttribute="trailing" constant="4" id="lDw-0p-EJC"/>
+                                        <constraint firstItem="qgU-nN-Rti" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="top" constant="7" id="oFl-jo-e2R"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ageLabel" destination="qgU-nN-Rti" id="cL0-e0-X3b"/>
+                                    <outlet property="currentPositionLabel" destination="2Fi-Y1-BKu" id="vYG-uz-j8G"/>
+                                    <outlet property="heightLabel" destination="asu-6x-jZ2" id="xBy-YV-mu4"/>
+                                    <outlet property="nameLabel" destination="mHG-KE-f5S" id="nj3-ar-332"/>
+                                    <outlet property="nicknamesLabel" destination="65B-Dy-oYA" id="wql-bP-SSd"/>
+                                    <segue destination="Hf3-6o-N7h" kind="push" identifier="editBeaconSegue" id="4fY-HI-xUu"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kp0-s6-F5L" id="w7Q-py-pEj"/>
+                            <outlet property="delegate" destination="kp0-s6-F5L" id="bJj-9c-Lbn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Vault Items" id="a5L-TL-wt5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="rei-ct-kog">
+                            <connections>
+                                <action selector="toggleEditing:" destination="kp0-s6-F5L" id="21H-j4-bzz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dp7-Vp-fvE">
+                            <connections>
+                                <segue destination="NDG-Uu-PiU" kind="modal" id="RDB-5k-hje"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJE-5Q-xbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="660"/>
+        </scene>
+        <!--New Vault Item-->
+        <scene sceneID="Cul-rm-vjT">
+            <objects>
+                <tableViewController id="Hf3-6o-N7h" customClass="StorEditVaultItemViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kSA-TZ-Z1D">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.45098039220000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection footerTitle="Nicknames need to be comma separated to be saved correctly as individual items" id="Ngh-Jt-WP8">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="ugf-xX-VXw">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ugf-xX-VXw" id="N0d-3a-NNI">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XCD-RY-hC8">
+                                                    <rect key="frame" x="90" y="7" width="210" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hf3-6o-N7h" id="fPk-fL-Z2r"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQZ-Qb-Jwq">
+                                                    <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="tnE-gE-TmW">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tnE-gE-TmW" id="P7c-eq-W6V">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aX7-d1-zHG">
+                                                    <rect key="frame" x="90" y="10" width="210" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hf3-6o-N7h" id="u6a-jH-lMx"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gK5-yJ-kUK">
+                                                    <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="7tB-lR-G4o">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7tB-lR-G4o" id="ay4-PE-qzI">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current position" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8DY-kM-tHh">
+                                                    <rect key="frame" x="90" y="7" width="210" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hf3-6o-N7h" id="Vij-T9-nBp"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Job" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oau-bK-xz9">
+                                                    <rect key="frame" x="8" y="7" width="68" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="hOu-Md-P0q">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hOu-Md-P0q" id="r7E-TG-Lf0">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0yT-rE-bb4">
+                                                    <rect key="frame" x="70" y="6" width="230" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hf3-6o-N7h" id="IxS-j8-0em"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ao-po-vPZ">
+                                                    <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="LXx-Ra-9Ky">
+                                                    <rect key="frame" x="90" y="9" width="161" height="31"/>
+                                                </slider>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtN-G1-SbQ">
+                                                    <rect key="frame" x="259" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="2mO-nR-oO8">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2mO-nR-oO8" id="Rhd-XU-jVK">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uii-jf-TbR">
+                                                    <rect key="frame" x="70" y="6" width="230" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hf3-6o-N7h" id="F0i-Dh-pgU"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL8-OP-pLx">
+                                                    <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5.5" minValue="1" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="gb6-Xv-flD">
+                                                    <rect key="frame" x="90" y="9" width="163" height="31"/>
+                                                </slider>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-9a-0ET">
+                                                    <rect key="frame" x="259" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="O1Y-yf-NyK">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1Y-yf-NyK" id="lMA-cD-2G9">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sOF-9a-yxP">
+                                                    <rect key="frame" x="70" y="6" width="230" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hf3-6o-N7h" id="EgP-A4-rew"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nicknames" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXA-NK-Ueb">
+                                                    <rect key="frame" x="90" y="7" width="210" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Hf3-6o-N7h" id="W5a-76-WYr"/>
+                                                    </connections>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nicknames" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lHR-1L-5oM">
+                                                    <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Hf3-6o-N7h" id="DAg-7W-HNe"/>
+                            <outlet property="delegate" destination="Hf3-6o-N7h" id="KmA-4i-P4R"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Vault Item" id="5h1-Jc-fYg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="jUU-4J-CX3">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="Hf3-6o-N7h" id="HlO-ch-6Pe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ageLabel" destination="AtN-G1-SbQ" id="qpH-Vr-9ir"/>
+                        <outlet property="ageSlider" destination="LXx-Ra-9Ky" id="hpm-bu-g6B"/>
+                        <outlet property="currentPositionTextField" destination="8DY-kM-tHh" id="WFz-Dn-O7a"/>
+                        <outlet property="firstNameTextField" destination="XCD-RY-hC8" id="tXi-ay-w4t"/>
+                        <outlet property="heightLabel" destination="ghp-9a-0ET" id="QHL-Bd-SkX"/>
+                        <outlet property="heightSlider" destination="gb6-Xv-flD" id="TPM-R7-aRA"/>
+                        <outlet property="lastNameTextField" destination="aX7-d1-zHG" id="oq1-bt-KiY"/>
+                        <outlet property="nicknamesTextField" destination="fXA-NK-Ueb" id="eFO-z3-KgK"/>
+                        <segue destination="dCa-GN-5MU" kind="unwind" identifier="unwindToDetectBeaconSegue" unwindAction="unwindToDetectBeaconVC:" id="jtd-ZG-4vg"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="svr-tC-Ei1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dCa-GN-5MU" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2207" y="650"/>
+        </scene>
+        <!--Stor Tab Bar Controller-->
+        <scene sceneID="X00-WX-jMt">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wnh-zH-Ekz" customClass="StorTabBarController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="kNf-De-3ap">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.0" green="0.45098039220000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.45098039220000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="quk-7V-Icr" kind="relationship" relationship="viewControllers" id="WkS-VY-bba"/>
+                        <segue destination="H97-zV-p3m" kind="relationship" relationship="viewControllers" id="M33-ap-3gC"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nm2-FA-ImI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="190" y="664"/>
+        </scene>
+        <!--Vault-->
+        <scene sceneID="ho2-AD-QJ1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="quk-7V-Icr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Vault" image="VaultTabBarIcon" id="B90-ac-XZL"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sp9-XB-zlB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kp0-s6-F5L" kind="relationship" relationship="rootViewController" id="xJ5-Si-Dbj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t5g-s6-kx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="716" y="664"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="tWg-zk-E6L">
+            <objects>
+                <tableViewController id="5VG-CB-vt2" customClass="StorAboutTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Vmh-W7-X18">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ContextHub" id="lay-QR-TNo">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <sections>
+                            <tableViewSection id="zEz-q4-Ami">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="140" id="5mS-k1-7os">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5mS-k1-7os" id="f4E-Iy-0wh">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieW-xl-nCR">
+                                                    <rect key="frame" x="0.0" y="-1" width="320" height="142"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">This sample application uses ContextHub to create, retrieve, update and delete vault items on the server. ContextHub allows you to quickly save information that can be accessed in both your apps and context rules without needing additional servers.</string>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="5VG-CB-vt2" id="rDB-YH-alq"/>
+                            <outlet property="delegate" destination="5VG-CB-vt2" id="Ea4-Ox-eyA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="About" id="1D5-xK-6tF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RCh-IE-mJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="1343"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="fXW-9a-jkT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H97-zV-p3m" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="About" image="AboutTabBarIcon" id="QsA-Nc-YCk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Ad-sZ-Rtj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5VG-CB-vt2" kind="relationship" relationship="rootViewController" id="ddk-ub-BCd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O0e-vV-x0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="716" y="1343"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bjI-aQ-G3j">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NDG-Uu-PiU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGW-mF-zJY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hf3-6o-N7h" kind="relationship" relationship="rootViewController" id="wsZ-Hm-7pr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e84-iK-B1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1715" y="1046"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AboutTabBarIcon" width="28" height="28"/>
+        <image name="ContextHub" width="500" height="100"/>
+        <image name="VaultTabBarIcon" width="28" height="22"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="4fY-HI-xUu"/>
+    </inferredMetricsTieBreakers>
+</document>
