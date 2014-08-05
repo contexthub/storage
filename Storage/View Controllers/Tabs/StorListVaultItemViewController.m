@@ -21,6 +21,12 @@
 
 @implementation StorListVaultItemViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.searchDisplayController.searchResultsTableView registerClass:[StorVaultItemCell class] forCellReuseIdentifier:@"StorVaultItemCellIdentifier"];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -54,7 +60,7 @@
     self.navigationItem.leftBarButtonItem = editButtonItem;
 }
 
-// Respond to synchronization finishing by removing and adding all beacons
+// Respond to synchronization finishing by removing and adding all vault items
 - (void)syncCompleted:(NSNotification *)notification {
     [self.tableView reloadData];
 }
@@ -62,7 +68,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"editBeaconSegue"]) {
+    if ([segue.identifier isEqualToString:@"editVaultItemSegue"]) {
         StorEditVaultItemViewController *editVC = segue.destinationViewController;
         editVC.vaultItem = [StorVaultItemStore sharedInstance].vaultItems[[self.tableView indexPathForSelectedRow].row];
     }
@@ -70,6 +76,38 @@
 
 - (IBAction)unwindToListVaultItemVC:(UIStoryboardSegue *)segue {
     
+}
+
+#pragma mark - Search
+
+// Searches our store based on scope string
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSString *keyPath = @"";
+    if ([scope isEqualToString:@"First name"]) {
+        keyPath = @"firstName";
+    } else if ([scope isEqualToString:@"Last name"]) {
+        keyPath = @"lastName";
+    }
+    
+    // Find vault items with match for value at key path (for strings, this is an exact case-sensitive match)
+    [[StorVaultItemStore sharedInstance] getVaultItemsWithKeyPath:keyPath value:searchText completionHandler:^(NSError *error) {
+        
+        if (!error) {
+            // Reload the table view if we get no errors
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        } else {
+            NSLog(@"Stor: Failed to get vault items with matching value at key path");
+        }
+    }];
+}
+
+// Called each time a character is entered or deleted from search bar
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    return NO;
 }
 
 #pragma mark - Table View Methods
@@ -81,13 +119,28 @@
 
 // Number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [StorVaultItemStore sharedInstance].vaultItems.count;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        
+        return [StorVaultItemStore sharedInstance].filteredVaultItems.count;
+    } else {
+        return [StorVaultItemStore sharedInstance].vaultItems.count;
+    }
 }
 
 // Information for a row
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    StorVaultItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StorVaultItemCellIdentifier"];
-    StorVaultItem *vaultItem = [StorVaultItemStore sharedInstance].vaultItems[indexPath.row];
+    StorVaultItemCell *cell = (StorVaultItemCell *)[self.tableView dequeueReusableCellWithIdentifier:@"StorVaultItemCellIdentifier"];
+    StorVaultItem *vaultItem = nil;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        vaultItem = [StorVaultItemStore sharedInstance].filteredVaultItems[indexPath.row];
+        
+        
+        
+    } else {
+        vaultItem = [StorVaultItemStore sharedInstance].vaultItems[indexPath.row];
+    }
     
     cell.nameLabel.text = vaultItem.fullName;
     cell.currentPositionLabel.text = vaultItem.currentPosition;
@@ -98,18 +151,30 @@
     return cell;
 }
 
+// Height for row
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70;
+}
+
 // A row is being updated/deleted
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete a beacon
-        StorVaultItem *vaultItemToDelete = [StorVaultItemStore sharedInstance].vaultItems[indexPath.row];
+        // Delete a vault item
+        StorVaultItem *vaultItemToDelete = nil;
+        if (tableView == self.searchDisplayController.searchResultsTableView) {
+            vaultItemToDelete = [StorVaultItemStore sharedInstance].filteredVaultItems[indexPath.row];
+        } else {
+            vaultItemToDelete = [StorVaultItemStore sharedInstance].vaultItems[indexPath.row];
+        }
+        
         [[StorVaultItemStore sharedInstance] deleteVaultItem:vaultItemToDelete completionHandler:^(NSError *error) {
             
             if (!error) {
                 [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 
-                // Synchronize beacons (this would not need to be done if push were enabled)
+                // Synchronize vault items (this would not need to be done if push were enabled)
                 [[StorVaultItemStore sharedInstance] syncVaultItems];
             } else {
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error deleting vault item from ContextHub" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];

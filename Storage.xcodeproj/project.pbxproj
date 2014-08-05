@@ -55,8 +55,8 @@
 		1F64663619900EF00030B138 /* StorListVaultItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorListVaultItemViewController.h; sourceTree = "<group>"; };
 		1F64663719900EF00030B138 /* StorListVaultItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorListVaultItemViewController.m; sourceTree = "<group>"; };
 		1F64663C19900F110030B138 /* ContextHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextHub.framework; sourceTree = "<group>"; };
-		1F64663E199015F00030B138 /* CCHVaultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCHVaultItem.h; sourceTree = "<group>"; };
-		1F64663F199015F00030B138 /* CCHVaultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCHVaultItem.m; sourceTree = "<group>"; };
+		1F64663E199015F00030B138 /* CCHVaultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCHVaultItem.h; path = Models/CCHVaultItem.h; sourceTree = "<group>"; };
+		1F64663F199015F00030B138 /* CCHVaultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCHVaultItem.m; path = Models/CCHVaultItem.m; sourceTree = "<group>"; };
 		1F64664219902CFF0030B138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F64664419902D2F0030B138 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F646646199032E70030B138 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -98,8 +98,6 @@
 		1F64662319900EDE0030B138 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1F64663E199015F00030B138 /* CCHVaultItem.h */,
-				1F64663F199015F00030B138 /* CCHVaultItem.m */,
 				1F64662419900EDE0030B138 /* StorVaultItem.h */,
 				1F64662519900EDE0030B138 /* StorVaultItem.m */,
 				1F64662619900EDE0030B138 /* StorVaultItemStore.h */,
@@ -140,6 +138,15 @@
 			path = Tabs;
 			sourceTree = "<group>";
 		};
+		1FB3E0B21991130D00767B19 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1F64663E199015F00030B138 /* CCHVaultItem.h */,
+				1F64663F199015F00030B138 /* CCHVaultItem.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		1FC2DE9A198FF23D00DA28A9 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +175,7 @@
 				1F64662319900EDE0030B138 /* Models */,
 				1F64662A19900EEB0030B138 /* Views */,
 				1F64662E19900EF00030B138 /* View Controllers */,
+				1FB3E0B21991130D00767B19 /* Utilities */,
 				1F64661F19900ED40030B138 /* StorAppDelegate.h */,
 				1F64662019900ED40030B138 /* StorAppDelegate.m */,
 				1F64662119900ED40030B138 /* StorConstants.h */,

@@ -15,7 +15,8 @@
 NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncCompletedNotification";
 
 @interface StorVaultItemStore ()
-@property (nonatomic, readwrite, strong) NSMutableArray *vaultItems;
+@property (nonatomic, strong, readwrite) NSMutableArray *vaultItems;
+@property (nonatomic, strong, readwrite) NSMutableArray *filteredVaultItems;
 @end
 
 @implementation StorVaultItemStore
@@ -35,6 +36,7 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
     self = [super init];
     if (self) {
         _vaultItems = [NSMutableArray array];
+        _filteredVaultItems = [NSMutableArray array];
     }
     
     return self;
@@ -97,6 +99,31 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
     return nil;
 }
 
+// Get all vault items in ContextHub with a specific value for a given key path
+- (void)getVaultItemsWithKeyPath:(NSString *)keyPath value:(NSString *)value completionHandler:(void (^)(NSError *error))completionHandler {
+    
+    if (completionHandler) {
+        [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultTag] keyPath:keyPath value:value completionHandler:^(NSArray *responses, NSError *error) {
+            
+            if (!error) {
+                [self.filteredVaultItems removeAllObjects];
+                
+                for (NSDictionary *vaultDict in responses) {
+                    StorVaultItem *vaultItem = [[StorVaultItem alloc] initWithDictionary:vaultDict];
+                    [self.filteredVaultItems addObject:vaultItem];
+                }
+                
+                completionHandler (nil);
+            } else {
+                NSLog(@"Stor: Could not filter vault items using ContextHub");
+                completionHandler (error);
+            }
+        }];
+    } else {
+        [NSException raise:NSInvalidArgumentException format:@"Did not pass completionHandler to method %@", NSStringFromSelector(_cmd)];
+    }
+}
+
 // Updates a vault item in ContextHub and in our store
 - (void)updateVaultItem:(StorVaultItem *)vaultItem completionHandler:(void (^)(NSError *error))completionHandler {
     
@@ -130,7 +157,7 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
         [[CCHVault sharedInstance] deleteItem:[vaultItem dictionaryForVaultItem] completionHandler:^(NSDictionary *response, NSError *error) {
             
             if (!error) {
-                NSLog(@"Stor: Successfully deleted beacon %@ on ContextHub", vaultItem.fullName);
+                NSLog(@"Stor: Successfully deleted vault item %@ on ContextHub", vaultItem.fullName);
                 completionHandler(nil);
             } else {
                 NSLog(@"Stor: Could not delete vault item %@ on ContextHub", vaultItem.fullName);

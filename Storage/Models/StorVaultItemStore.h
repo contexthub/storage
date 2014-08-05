@@ -17,12 +17,14 @@ extern NSString const *StorVaultItemSyncCompletedNotification;
 @interface StorVaultItemStore : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableArray *vaultItems;
+@property (nonatomic, strong, readonly) NSMutableArray *filteredVaultItems;
 
 + (StorVaultItemStore *)sharedInstance;
 
 - (void)createVaultItem:(StorVaultItem *)vaultItem completionHandler:(void (^)(StorVaultItem *createdVaultItem, NSError *error))completionHandler;
 - (void)syncVaultItems;
 - (StorVaultItem *)findVaultItemInStoreWithID:(NSString *)vaultItemID;
+- (void)getVaultItemsWithKeyPath:(NSString *)keyPath value:(NSString *)value completionHandler:(void (^)(NSError *error))completionHandler;
 - (void)updateVaultItem:(StorVaultItem *)vaultItem completionHandler:(void (^)(NSError *error))completionHandler;
 - (void)deleteVaultItem:(StorVaultItem *)vaultItem completionHandler:(void (^)(NSError *error))completionHandler;
 
