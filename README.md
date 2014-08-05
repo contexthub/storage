@@ -38,7 +38,7 @@ In this sample, most of the important code that deals with CRUDing vault items o
 ## Usage
 
 Below shows the basics of how the CCHVault class is used
-```
+```objc
 // Creating a vault item with a firstName of "Jeff" and tag "vault-tag"
 // (StorVaultItem is a custom class with custom properties that wraps around CCHVaultItem base class)
 StorVaultItem *item = [[StorVaultItem alloc] init];
