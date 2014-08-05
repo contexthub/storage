@@ -20,10 +20,7 @@
 @property (nonatomic) CGFloat heightInFeet;
 @property (nonatomic, strong) NSMutableArray *nicknames;
 
-- (NSDictionary *)dataDictionaryForVaultItem;
-
 - (NSString *)fullName;
 - (NSString *)nicknamesString;
-
 
 @end

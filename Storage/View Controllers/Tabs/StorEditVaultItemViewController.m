@@ -11,6 +11,8 @@
 #import "StorVaultItem.h"
 #import "StorVaultItemStore.h"
 
+#import "StorConstants.h"
+
 @interface StorEditVaultItemViewController ()
 
 @property (nonatomic, weak) IBOutlet UITextField *firstNameTextField;
@@ -66,6 +68,7 @@
     vaultItem.currentPosition = self.currentPositionTextField.text;
     vaultItem.ageInYears = (int)self.ageSlider.value;
     vaultItem.heightInFeet = self.heightSlider.value;
+    vaultItem.vaultTags = @[StorVaultItemTag];
     NSString *nicknamesWithoutWhiteSpace = [self.nicknamesTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     vaultItem.nicknames = [[nicknamesWithoutWhiteSpace componentsSeparatedByString:@","] mutableCopy];
     

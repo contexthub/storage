@@ -25,6 +25,7 @@ static NSDateFormatter * __dateFormatter = nil;
     return __dateFormatter;
 }
 
+// Creates a vault item
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     
     if (self) {
@@ -48,8 +49,15 @@ static NSDateFormatter * __dateFormatter = nil;
     return self;
 }
 
+// This method is meant to be overridden by a subclass which will provide a dictionary with data contained in the subclass
+- (NSDictionary *)dataDictionaryForVaultItem {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    return dictionary;
+}
+
+// Creates a dictionary for this vault item when it needs to be updated or deleted
 - (NSMutableDictionary *)dictionaryForVaultItem {
-    [self.vaultDict removeObjectForKey:@"data"];
+    self.vaultDict[@"data"] = [self dataDictionaryForVaultItem];
     [self.vaultDict setValue:self.vaultTags forKeyPath:@"vault_info.tags"];
     
     return [self.vaultDict mutableCopy];

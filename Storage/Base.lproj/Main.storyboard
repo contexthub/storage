@@ -43,7 +43,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgU-nN-Rti">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgU-nN-Rti">
                                             <rect key="frame" x="210" y="8" width="73" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="73" id="9Ry-Ff-Si5"/>
@@ -53,7 +53,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asu-6x-jZ2">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asu-6x-jZ2">
                                             <rect key="frame" x="238" y="27" width="45" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="45" id="aeJ-K1-LYd"/>
@@ -72,9 +72,9 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="asu-6x-jZ2" secondAttribute="trailing" constant="4" id="3xK-0T-ZO4"/>
-                                        <constraint firstItem="asu-6x-jZ2" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="top" constant="26" id="IJR-Q3-X9u"/>
+                                        <constraint firstItem="asu-6x-jZ2" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="top" constant="27" id="IJR-Q3-X9u"/>
                                         <constraint firstAttribute="trailing" secondItem="qgU-nN-Rti" secondAttribute="trailing" constant="4" id="lDw-0p-EJC"/>
-                                        <constraint firstItem="qgU-nN-Rti" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="top" constant="7" id="oFl-jo-e2R"/>
+                                        <constraint firstItem="qgU-nN-Rti" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="top" constant="8" id="oFl-jo-e2R"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

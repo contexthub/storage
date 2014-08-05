@@ -33,13 +33,7 @@
     return self;
 }
 
-- (NSDictionary *)dictionaryForVaultItem {
-    NSMutableDictionary *dictionary = [super dictionaryForVaultItem];
-    dictionary[@"data"] = [self dataDictionaryForVaultItem];
-    
-    return dictionary;
-}
-
+// We override this m
 - (NSDictionary *)dataDictionaryForVaultItem {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     

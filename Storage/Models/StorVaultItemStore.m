@@ -17,6 +17,8 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
 @interface StorVaultItemStore ()
 @property (nonatomic, strong, readwrite) NSMutableArray *vaultItems;
 @property (nonatomic, strong, readwrite) NSMutableArray *filteredVaultItems;
+
+@property (nonatomic) BOOL verboseContextHubLogging;
 @end
 
 @implementation StorVaultItemStore
@@ -37,6 +39,8 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
     if (self) {
         _vaultItems = [NSMutableArray array];
         _filteredVaultItems = [NSMutableArray array];
+        
+        _verboseContextHubLogging = YES; // Verbose logging shows all responses from ContextHub
     }
     
     return self;
@@ -46,9 +50,14 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
 - (void)createVaultItem:(StorVaultItem *)vaultItem completionHandler:(void (^)(StorVaultItem *createdVaultItem, NSError *error))completionHandler {
     
     if (completionHandler) {
-        [[CCHVault sharedInstance] createItem:[vaultItem dataDictionaryForVaultItem] tags:@[StorVaultTag] completionHandler:^(NSDictionary *response, NSError *error) {
+        [[CCHVault sharedInstance] createItem:[vaultItem dataDictionaryForVaultItem] tags:vaultItem.vaultTags completionHandler:^(NSDictionary *response, NSError *error) {
             
             if (!error) {
+                
+                if (self.verboseContextHubLogging) {
+                     NSLog(@"Stor: [CCHVault createItem: completionHandler:] response: %@", response);
+                }
+                
                 StorVaultItem *createdVaultItem = [[StorVaultItem alloc] initWithDictionary:response];
                 [self.vaultItems addObject:createdVaultItem];
                 
@@ -66,16 +75,21 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
 
 // Synchronizes vault items from ContextHub
 - (void)syncVaultItems {
-    [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultTag] completionHandler:^(NSArray *responses, NSError *error) {
+    [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultItemTag] completionHandler:^(NSArray *responses, NSError *error) {
        
         if (!error) {
-            NSLog(@"Stor: Succesfully synced %d new vault items from ContextHub", (int)(responses.count - self.vaultItems.count));
+            
+            if (self.verboseContextHubLogging) {
+                NSLog(@"Stor: [CCHVault getItemsWithTags: completionHandler:] response: %@", responses);
+            }
+            
             [self.vaultItems removeAllObjects];
             
             for (NSDictionary *vaultDict in responses) {
                 StorVaultItem *vaultItem = [[StorVaultItem alloc] initWithDictionary:vaultDict];
                 [self.vaultItems addObject:vaultItem];
             }
+            NSLog(@"Stor: Succesfully synced %d new vault items from ContextHub", (int)(responses.count - self.vaultItems.count));
             
             // Post notification that sync is complete
             [[NSNotificationCenter defaultCenter] postNotificationName:(NSString *)StorVaultItemSyncCompletedNotification object:nil];
@@ -103,9 +117,14 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
 - (void)getVaultItemsWithKeyPath:(NSString *)keyPath value:(NSString *)value completionHandler:(void (^)(NSError *error))completionHandler {
     
     if (completionHandler) {
-        [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultTag] keyPath:keyPath value:value completionHandler:^(NSArray *responses, NSError *error) {
+        [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultItemTag] keyPath:keyPath value:value completionHandler:^(NSArray *responses, NSError *error) {
             
             if (!error) {
+                
+                if (self.verboseContextHubLogging) {
+                    NSLog(@"Stor: [CCHVault getItemsWithTags: keyPath: value: completionHandler:] response: %@", responses);
+                }
+                
                 [self.filteredVaultItems removeAllObjects];
                 
                 for (NSDictionary *vaultDict in responses) {
@@ -131,6 +150,11 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
         [[CCHVault sharedInstance] updateItem:[vaultItem dictionaryForVaultItem] completionHandler:^(NSDictionary *response, NSError *error) {
             
             if (!error) {
+                
+                if (self.verboseContextHubLogging) {
+                    NSLog(@"Stor: [CCHVault updateItem: completionHandler:] response: %@", response);
+                }
+                
                 NSLog(@"Stor: Successfully updated vault item %@ on ContextHub", vaultItem.fullName);
                 completionHandler (nil);
             } else {
@@ -157,6 +181,10 @@ NSString const *StorVaultItemSyncCompletedNotification = @"StorVaultItemSyncComp
         [[CCHVault sharedInstance] deleteItem:[vaultItem dictionaryForVaultItem] completionHandler:^(NSDictionary *response, NSError *error) {
             
             if (!error) {
+                if (self.verboseContextHubLogging) {
+                    NSLog(@"Stor: [CCHVault deleteItem: completionHandler:] response: %@", response);
+                }
+                
                 NSLog(@"Stor: Successfully deleted vault item %@ on ContextHub", vaultItem.fullName);
                 completionHandler(nil);
             } else {

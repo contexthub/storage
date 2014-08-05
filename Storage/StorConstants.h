@@ -9,7 +9,7 @@
 #ifndef Storage_StorConstants_h
 #define Storage_StorConstants_h
 
-static NSString const *StorVaultTag = @"vault-tag";
+static NSString const *StorVaultItemTag = @"vault-tag";
 
 #define kStorAppTintColor         [UIColor colorWithRed:0.0 green:0.449 blue:0.627 alpha:1.0]
 
