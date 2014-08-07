@@ -4,7 +4,7 @@
 The Storage sample app that introduces you to the vault features of the ContextHub iOS SDK.
 
 ## Purpose
-This sample application will show you how to create, retrieve, update, delete (CRUD) and perform key path vault search on vault items  in ContextHub.
+This sample application will show you how to create, retrieve, update, delete (CRUD) and perform key path vault search on vault items  in ContextHub. This branch differs from the master branch in that it shows how to more closely use the CCHVault class in a real-world application (it puts many typical operations in `CCHVaultItem` and in `StorVaultItemStore` to make things much easier for you)
 
 ## ContextHub
 
@@ -37,7 +37,7 @@ In this sample, most of the important code that deals with CRUDing vault items o
 
 ## Usage
 
-Below shows the basics of how the CCHVault class is used
+Below shows the basics of how the CCHVault class is used in this sample 
 ```objc
 // Creating a vault item with a firstName of "Jeff" and tag "vault-tag"
 // (StorVaultItem is a custom class with custom properties that wraps around CCHVaultItem base class)
