@@ -23,8 +23,7 @@
 #endif
     
     //Register the app id of the application you created on https://app.contexthub.com
-    //[ContextHub registerWithAppId:@"YOUR-VAULT-APP-ID-HERE"];
-    [ContextHub registerWithAppId:@"4e0aad2a-b052-42e0-93ee-6f024d11de10"];
+    [ContextHub registerWithAppId:@"YOUR-VAULT-APP-ID-HERE"];
     
     return YES;
 }
