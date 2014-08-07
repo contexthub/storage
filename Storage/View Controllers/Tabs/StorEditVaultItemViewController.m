@@ -7,9 +7,10 @@
 //
 
 #import "StorEditVaultItemViewController.h"
+#import <ContextHub/ContextHub.h>
 
+#import "StorConstants.h"
 #import "StorVaultItem.h"
-#import "StorVaultItemStore.h"
 
 #import "StorConstants.h"
 
@@ -24,6 +25,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *heightLabel;
 @property (nonatomic, weak) IBOutlet UITextField *nicknamesTextField;
 
+@property (nonatomic) BOOL verboseContextHubLogging;
+
 @end
 
 @implementation StorEditVaultItemViewController
@@ -31,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.verboseContextHubLogging = YES; // Verbose logging shows all responses from ContextHub
     
     [self.ageSlider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.heightSlider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
@@ -72,15 +77,29 @@
     NSString *nicknamesWithoutWhiteSpace = [self.nicknamesTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     vaultItem.nicknames = [[nicknamesWithoutWhiteSpace componentsSeparatedByString:@","] mutableCopy];
     
-    // Create a vault item in the StorVaultItemStore
-    [[StorVaultItemStore sharedInstance] createVaultItem:vaultItem completionHandler:^(StorVaultItem *createdVaultItem, NSError *error) {
+    // Create the dictionary for creating a vault item in ContextHub
+    NSDictionary *data = @{@"firstName":vaultItem.firstName, @"lastName":vaultItem.lastName, @"currentPosition":vaultItem.currentPosition, @"ageInYears":[NSString stringWithFormat:@"%ld", (long)vaultItem.ageInYears], @"heightInFeet": [NSString stringWithFormat:@"%f", vaultItem.heightInFeet], @"nicknames":vaultItem.nicknames};
+    
+    // Create the vault item in ContextHub
+    [[CCHVault sharedInstance] createItem:data tags:vaultItem.vaultTags completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
+            
+            if (self.verboseContextHubLogging) {
+                NSLog(@"Stor: [CCHVault createItem: completionHandler:] response: %@", response);
+            }
+            
+            StorVaultItem *createdVaultItem = [[StorVaultItem alloc] initWithDictionary:response];
+            [self.vaultItems addObject:createdVaultItem];
+            
             // New vault item has already been saved in our store so we don't need to add it
             // Dismiss this view
             [self dismissViewControllerAnimated:YES completion:nil];
+            
+            NSLog(@"Stor: Successfully created vault item %@ on ContextHub", createdVaultItem.fullName);
         } else {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error creating your vault item in ContextHub" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+            NSLog(@"Stor: Could not create vault item %@ on ContextHub", vaultItem.fullName);
         }
     }];
 }
@@ -95,14 +114,23 @@
     NSString *nicknamesWithoutWhiteSpace = [self.nicknamesTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     self.vaultItem.nicknames = [[nicknamesWithoutWhiteSpace componentsSeparatedByString:@","] mutableCopy];
     
-    [[StorVaultItemStore sharedInstance] updateVaultItem:self.vaultItem completionHandler:^(NSError *error) {
+    // Create the dictionary that's need to make the dictionary to update an item in ContextHub (delete uses the same structure)
+    NSDictionary *data = @{@"firstName":self.vaultItem.firstName, @"lastName":self.vaultItem.lastName, @"currentPosition":self.vaultItem.currentPosition, @"ageInYears":[NSString stringWithFormat:@"%ld", (long)self.vaultItem.ageInYears], @"heightInFeet": [NSString stringWithFormat:@"%f", self.vaultItem.heightInFeet], @"nicknames":self.vaultItem.nicknames};
+    NSDictionary *vault_info = @{@"id":self.vaultItem.vaultID, @"created_at":[self.vaultItem.vaultDict valueForKeyPath:@"vault_info.created_at"], @"updated_at":[self.vaultItem.vaultDict valueForKeyPath:@"vault_info.updated_at"], @"tags":self.vaultItem.vaultTags};
+    NSDictionary *vaultItem = @{@"data":data, @"vault_info":vault_info};
+    
+    // Update vault item in ContextHub
+    [[CCHVault sharedInstance] updateItem:vaultItem completionHandler:^(NSDictionary *response, NSError *error) {
         
         if (!error) {
-            // Updated vault item has already been saved in our store so we don't need to add it again
-            // Dismiss this view
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            if (self.verboseContextHubLogging) {
+                NSLog(@"Stor: [CCHVault updateItem: completionHandler:] response: %@", response);
+            }
+            
+            NSLog(@"Stor: Successfully updated vault item %@ on ContextHub", self.vaultItem.fullName);
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error updating your vault item in ContextHub" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+            NSLog(@"Stor: Could not update vault item %@ on ContextHub", self.vaultItem.fullName);
         }
     }];
 }

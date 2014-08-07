@@ -15,7 +15,7 @@
 @implementation StorVaultItem
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    self = [super initWithDictionary:dictionary];
+    self = [super init];
     
     if (self) {
         _firstName = [dictionary valueForKeyPath:@"data.firstName"];
@@ -28,6 +28,24 @@
         
         // Values that represent arrays and dictionaries do *not* need to be converted
         _nicknames = [dictionary valueForKeyPath:@"data.nicknames"];
+        
+        
+        // ContextHub properties
+        _vaultID = [dictionary valueForKeyPath:@"vault_info.id"];
+        _vaultTags = [dictionary valueForKeyPath:@"vault_info.tags"];
+        
+        // Create a date formatter that understands server UTC timestamp
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+        
+        // Save created_at and updated_at dates
+        NSString *createdDate = [self.vaultDict valueForKeyPath:@"vault_info.created_at"];
+        _vaultCreatedAtDate = [dateFormatter dateFromString:createdDate];
+        NSString *updatedDate = [self.vaultDict valueForKeyPath:@"vault_info.updated_at"];
+        _vaultUpdatedAtDate = [dateFormatter dateFromString:updatedDate];
+        
+        _vaultDict = [dictionary mutableCopy];
     }
     
     return self;

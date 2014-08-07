@@ -9,14 +9,12 @@
 /* Begin PBXBuildFile section */
 		1F64662219900ED40030B138 /* StorAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64662019900ED40030B138 /* StorAppDelegate.m */; };
 		1F64662819900EDE0030B138 /* StorVaultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64662519900EDE0030B138 /* StorVaultItem.m */; };
-		1F64662919900EDE0030B138 /* StorVaultItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64662719900EDE0030B138 /* StorVaultItemStore.m */; };
 		1F64662D19900EEB0030B138 /* StorVaultItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64662C19900EEB0030B138 /* StorVaultItemCell.m */; };
 		1F64663819900EF00030B138 /* StorTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64663019900EF00030B138 /* StorTabBarController.m */; };
 		1F64663919900EF00030B138 /* StorAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64663319900EF00030B138 /* StorAboutTableViewController.m */; };
 		1F64663A19900EF00030B138 /* StorEditVaultItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64663519900EF00030B138 /* StorEditVaultItemViewController.m */; };
 		1F64663B19900EF00030B138 /* StorListVaultItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64663719900EF00030B138 /* StorListVaultItemViewController.m */; };
 		1F64663D19900F110030B138 /* ContextHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F64663C19900F110030B138 /* ContextHub.framework */; };
-		1F646640199015F00030B138 /* CCHVaultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64663F199015F00030B138 /* CCHVaultItem.m */; };
 		1F64664319902CFF0030B138 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F64664119902CFF0030B138 /* Main.storyboard */; };
 		1F64664519902D2F0030B138 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F64664419902D2F0030B138 /* Images.xcassets */; };
 		1F646647199032E70030B138 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F646646199032E70030B138 /* CoreMotion.framework */; };
@@ -42,8 +40,6 @@
 		1F64662119900ED40030B138 /* StorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorConstants.h; sourceTree = "<group>"; };
 		1F64662419900EDE0030B138 /* StorVaultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorVaultItem.h; sourceTree = "<group>"; };
 		1F64662519900EDE0030B138 /* StorVaultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorVaultItem.m; sourceTree = "<group>"; };
-		1F64662619900EDE0030B138 /* StorVaultItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorVaultItemStore.h; sourceTree = "<group>"; };
-		1F64662719900EDE0030B138 /* StorVaultItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorVaultItemStore.m; sourceTree = "<group>"; };
 		1F64662B19900EEB0030B138 /* StorVaultItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorVaultItemCell.h; sourceTree = "<group>"; };
 		1F64662C19900EEB0030B138 /* StorVaultItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorVaultItemCell.m; sourceTree = "<group>"; };
 		1F64662F19900EF00030B138 /* StorTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorTabBarController.h; sourceTree = "<group>"; };
@@ -55,8 +51,6 @@
 		1F64663619900EF00030B138 /* StorListVaultItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorListVaultItemViewController.h; sourceTree = "<group>"; };
 		1F64663719900EF00030B138 /* StorListVaultItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorListVaultItemViewController.m; sourceTree = "<group>"; };
 		1F64663C19900F110030B138 /* ContextHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextHub.framework; sourceTree = "<group>"; };
-		1F64663E199015F00030B138 /* CCHVaultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCHVaultItem.h; path = Models/CCHVaultItem.h; sourceTree = "<group>"; };
-		1F64663F199015F00030B138 /* CCHVaultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCHVaultItem.m; path = Models/CCHVaultItem.m; sourceTree = "<group>"; };
 		1F64664219902CFF0030B138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F64664419902D2F0030B138 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1F646646199032E70030B138 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -100,8 +94,6 @@
 			children = (
 				1F64662419900EDE0030B138 /* StorVaultItem.h */,
 				1F64662519900EDE0030B138 /* StorVaultItem.m */,
-				1F64662619900EDE0030B138 /* StorVaultItemStore.h */,
-				1F64662719900EDE0030B138 /* StorVaultItemStore.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,15 +130,6 @@
 			path = Tabs;
 			sourceTree = "<group>";
 		};
-		1FB3E0B21991130D00767B19 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				1F64663E199015F00030B138 /* CCHVaultItem.h */,
-				1F64663F199015F00030B138 /* CCHVaultItem.m */,
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
 		1FC2DE9A198FF23D00DA28A9 = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +158,6 @@
 				1F64662319900EDE0030B138 /* Models */,
 				1F64662A19900EEB0030B138 /* Views */,
 				1F64662E19900EF00030B138 /* View Controllers */,
-				1FB3E0B21991130D00767B19 /* Utilities */,
 				1F64661F19900ED40030B138 /* StorAppDelegate.h */,
 				1F64662019900ED40030B138 /* StorAppDelegate.m */,
 				1F64662119900ED40030B138 /* StorConstants.h */,
@@ -339,7 +321,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F646640199015F00030B138 /* CCHVaultItem.m in Sources */,
 				1F64662D19900EEB0030B138 /* StorVaultItemCell.m in Sources */,
 				1F64663B19900EF00030B138 /* StorListVaultItemViewController.m in Sources */,
 				1F64662819900EDE0030B138 /* StorVaultItem.m in Sources */,
@@ -348,7 +329,6 @@
 				1F64663A19900EF00030B138 /* StorEditVaultItemViewController.m in Sources */,
 				1F64663819900EF00030B138 /* StorTabBarController.m in Sources */,
 				1FC2DEA9198FF23D00DA28A9 /* main.m in Sources */,
-				1F64662919900EDE0030B138 /* StorVaultItemStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
