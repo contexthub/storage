@@ -118,11 +118,8 @@ NSDictionary *updatedItem = @{@"data":data, @"vault_info":vault_info};
 }];
 
 // Deleting a vault item
-// Response is the same dictionary item from either the create or get method
-NSDictionary *data = @{@"firstName":@"Michael};
-NSDictionary *vault_info = @{@"id":[response valueForKeyPath:@"vault_info.id"], @"created_at":[response valueForKeyPath:@"vault_info.created_at"], @"updated_at":[response valueForKeyPath:@"vault_info.updated_at"], @"tags":[response valueForKeyPath:@"vault_info.tags"]};
-NSDictionary *updatedItem = @{@"data":data, @"vault_info":vault_info};
-[[CCHVault sharedInstance] deleteItem:updatedItem completionHandler:^(NSError *error) {
+// Response is the same dictionary item from either the create, get or update method
+[[CCHVault sharedInstance] deleteItem:response completionHandler:^(NSError *error) {
 
     if (!error) {
         NSLog(@"Successfully deleted vault item %@ on ContextHub", data[@"firstName"]);
