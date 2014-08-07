@@ -110,9 +110,9 @@
 		1F64662E19900EF00030B138 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F64663119900EF00030B138 /* Tabs */,
 				1F64662F19900EF00030B138 /* StorTabBarController.h */,
 				1F64663019900EF00030B138 /* StorTabBarController.m */,
-				1F64663119900EF00030B138 /* Tabs */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

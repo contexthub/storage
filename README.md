@@ -39,7 +39,7 @@ Below shows the basics of how the CCHVault class is used to do basic CRUD functi
 ```objc
 // Creating a vault item with a firstName of "Jeffrey", a few nicknames, and cities lived in with years associated with them
 // Our custom properties (string, array, dictionary)
-NSDictionary *item = @{@"firstName": @"Jeffrey", @"nicknames":@[@"Jeff", @"Michaelangelo"], @"cities": @{@"New York City":@"1995", @"Austin":@"2004", @"Houston":@"2010"}; 
+NSDictionary *item = @{@"firstName": @"Jeffrey", @"nicknames":@[@"Jeff", @"Michaelangelo"], @"cities": @{@"New York City":@"1995", @"Austin":@"2004", @"Houston":@"2010"}}; 
 [[CCHVault sharedInstance] createItem:item tags:@"vault-tag" completionHandler:^(NSDictionary *response, NSError *error) {
 
     if (!error) {
