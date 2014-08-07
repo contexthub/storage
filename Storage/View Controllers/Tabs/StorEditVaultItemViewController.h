@@ -13,5 +13,6 @@
 @interface StorEditVaultItemViewController : UITableViewController <UITextFieldDelegate>
 
 @property (nonatomic, weak) StorVaultItem *vaultItem;
+@property (nonatomic, weak) NSMutableArray *vaultItems;
 
 @end

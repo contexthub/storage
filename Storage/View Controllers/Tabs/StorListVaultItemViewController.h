@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StorListVaultItemViewController : UITableViewController <UISearchDisplayDelegate>
+@interface StorListVaultItemViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 
 @end

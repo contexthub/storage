@@ -16,9 +16,7 @@ The "vault" in ContextHub allows developers to store JSON-compliant data structu
 
 ## Sample Code
 
-In this sample, most of the important code that deals with CRUDing vault items occurs in `StorVaultItemStore.m` similar to above. Each method goes though a single operation you'll need to use `CCHVault`. `StorVaultItemStore` provides a thin wrapper around `CCHVault` which allows us to maintain state when UI elements like UITableView need to know how many vault items we currently have. 
-
-`StorVaultItem` is a subclass of `CCHVaultItem` which stores general information about all vault items like vault id, tags, created_at and updated_at dates. The subclass stores custom properties which we want saved as data in ContextHub. This makes dealing with `CCHVault`a bit easier which expects NSDictionary for all methods. `StorListVaultItemViewController` and `StorEditVaultItemViewController` show how to write UI code based around `StorVaultItemStore` to CRUD and search for vault items.
+In this sample, most of the important code that deals with CRUDing vault items occurs in `StorListVaultItemController.m` and `StorEditVaultItemController.m` similar to above. Each method goes though a single operation you'll need to use `CCHVault`. `CCHVault` expects JSON-compliant dictionaries so they can be serialized when stored in vault on ContextHub. `StorVaultItem` contains the properties we want to store.
 
 ## Getting Started
 
@@ -37,45 +35,57 @@ In this sample, most of the important code that deals with CRUDing vault items o
 
 ## Usage
 
-Below shows the basics of how the CCHVault class is used
+Below shows the basics of how the CCHVault class is used to do basic CRUD functions
 ```objc
-// Creating a vault item with a firstName of "Jeff" and tag "vault-tag"
-// (StorVaultItem is a custom class with custom properties that wraps around CCHVaultItem base class)
-StorVaultItem *item = [[StorVaultItem alloc] init];
-item.firstName = @"Jeff";   // Our custom property
-item.vaultTags = @[@"vault-tag"];
-[[CCHVault sharedInstance] createItem:[vaultItem dataDictionaryForVaultItem] tags:vaultItem.vaultTags completionHandler:^(NSDictionary *response, NSError *error) {
+// Creating a vault item with a firstName of "Jeffrey", a few nicknames, and cities lived in with years associated with them
+// Our custom properties (string, array, dictionary)
+NSDictionary *item = @{@"firstName": @"Jeffrey", @"nicknames":@[@"Jeff", @"Michaelangelo"], @"cities": @{@"New York City":@"1995", @"Austin":@"2004", @"Houston":@"2010"}; 
+[[CCHVault sharedInstance] createItem:item tags:@"vault-tag" completionHandler:^(NSDictionary *response, NSError *error) {
 
     if (!error) {
-        StorVaultItem *createdVaultItem = [[StorVaultItem alloc] initWithDictionary:response];
-        [self.vaultItems addObject:createdVaultItem];
+        // Log the response
+        NSLog(@"[CCHVault createItem: tags: completionHandler:] response: %@", response);
+        
+        // Accessing our saved data in the response
+        NSString *firstName = [response valueForKeyPath:@"data.firstName"];
+        NSArray *nicknames = [response valueForKeyPath:@"data.nicknames"];
+        NSDictionary *cities = [response valueForKeyPath:@"data.cities"];
 
-        NSLog(@"Stor: Successfully created vault item %@ on ContextHub", createdVaultItem.firstName);
-        completionHandler (createdVaultItem, nil);
+        // Accessing vault_info in the response
+        NSString *vaultID = [response valueForKeyPath:@"vault_info.id"];
+        NSArray *tags = [response valueForKeyPath:@"vault_info.tags"];
+        
+        // Create a date formatter that will interpret ISO 8661 timestamps
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+
+        // Accessing created_at and updated_at dates
+        NSString *createdDate = [response valueForKeyPath:@"vault_info.created_at"];
+        NSString *updatedDate = [response valueForKeyPath:@"vault_info.updated_at"];
+        NSDate *vaultCreatedAtDate = [dateFormatter dateFromString:createdDate];
+        NSDate *vaultUpdatedAtDate = [dateFormatter dateFromString:updatedDate];
     } else {
-        NSLog(@"Stor: Could not create vault item %@ on ContextHub", vaultItem.fullName);
-        completionHandler (nil, error);
+        NSLog(@"Could not create vault item %@ in ContextHub", item.firstName);
+        NSLog(@"Error: %@", error);
     }
 }];
 
-// Getting all vault items with the tag "vault-tag" and adding them to a NSMutableArray vaultItems
+// Getting all vault items with the tag "vault-tag" and log out the names
 [[CCHVault sharedInstance] getItemsWithTags:@[@"vault-tag"] completionHandler:^(NSArray *responses, NSError *error) {
 
     if (!error) {
 
         for (NSDictionary *vaultDict in responses) {
-            StorVaultItem *vaultItem = [[StorVaultItem alloc] initWithDictionary:vaultDict];
-            [self.vaultItems addObject:vaultItem];
+            NSLog(@"Name: %@", [vaultDict valueForKeyPath:@"data.firstName"]);
         }
-
-        completionHandler (nil);
     } else {
-        NSLog(@"Stor: Could not filter vault items using ContextHub");
-        completionHandler (error);
+        NSLog(@"Could not get vault items in ContextHub");
+        NSLog(@"Error: %@", error);
     }
 }];
 
-// Getting all vault items with the tag "vault-tag" and match "firstName = Jeff" and adding them to a NSMutableArray filteredVaultItems
+// Getting all vault items with the tag "vault-tag" and match "firstName = Jeff"
 NSString *keyPath = @"firstName";
 NSString *value = @"Jeff";
 [[CCHVault sharedInstance] getItemsWithTags:@[@"vault-tag"] keyPath:keyPath value:value completionHandler:^(NSArray *responses, NSError *error) {
@@ -83,42 +93,72 @@ NSString *value = @"Jeff";
     if (!error) {
 
         for (NSDictionary *vaultDict in responses) {
-            StorVaultItem *vaultItem = [[StorVaultItem alloc] initWithDictionary:vaultDict];
-            [self.filteredVaultItems addObject:vaultItem];
+            // Should only be printing first names that are "Jeff" since that's what we asked for
+            NSLog(@"Name: %@", [vaultDict valueForKeyPath:@"data.firstName"]);
         }
-
-        completionHandler (nil);
     } else {
-        NSLog(@"Stor: Could not filter vault items using ContextHub");
-        completionHandler (error);
+        NSLog(@"Could not filter vault items in ContextHub");
+        NSLog(@"Error: %@", error);
     }
 }];
 
-// Updating a vault item with the name "Michael" and adding the tag "employee"
-vaultItem.firstName = @"Michael";
-vaultItem.vaultTags = @[@"vault-tag", @"employee"];
-[[CCHVault sharedInstance] updateItem:[vaultItem dictionaryForVaultItem] completionHandler:^(NSDictionary *response, NSError *error) {
+// Updating a vault item with the first name "Michael" and adding the tag "employee"
+// Response is the same dictionary item from either the create or get method
+NSDictionary *data = @{@"firstName":@"Michael"};
+NSDictionary *vault_info = @{@"id":[response valueForKeyPath:@"vault_info.id"], @"created_at":[response valueForKeyPath:@"vault_info.created_at"], @"updated_at":[response valueForKeyPath:@"vault_info.updated_at"], @"tags":[response valueForKeyPath:@"vault_info.tags"]};
+NSDictionary *updatedItem = @{@"data":data, @"vault_info":vault_info};
+[[CCHVault sharedInstance] updateItem:updatedItem completionHandler:^(NSDictionary *response, NSError *error) {
 
     if (!error) {
-        NSLog(@"Stor: Successfully updated vault item %@ on ContextHub", vaultItem.fullName);
-        completionHandler (nil);
+        NSLog(@"Successfully updated vault item %@ on ContextHub", response[@"firstName"]);
     } else {
-        NSLog(@"Stor: Could not update vault item %@ on ContextHub", vaultItem.fullName);
-        completionHandler (error);
+        NSLog(@"Could not update vault item %@ on ContextHub", data[@"firstName"]);
+        NSLog(@"Error: %@", error);
     }
 }];
 
 // Deleting a vault item
-[[CCHVault sharedInstance] deleteItem:[vaultItem dictionaryForVaultItem] completionHandler:^(NSError *error) {
+// Response is the same dictionary item from either the create or get method
+NSDictionary *data = @{@"firstName":@"Michael};
+NSDictionary *vault_info = @{@"id":[response valueForKeyPath:@"vault_info.id"], @"created_at":[response valueForKeyPath:@"vault_info.created_at"], @"updated_at":[response valueForKeyPath:@"vault_info.updated_at"], @"tags":[response valueForKeyPath:@"vault_info.tags"]};
+NSDictionary *updatedItem = @{@"data":data, @"vault_info":vault_info};
+[[CCHVault sharedInstance] deleteItem:updatedItem completionHandler:^(NSError *error) {
 
     if (!error) {
-        NSLog(@"Stor: Successfully updated vault item %@ on ContextHub", vaultItem.fullName);
-        completionHandler (nil);
+        NSLog(@"Successfully deleted vault item %@ on ContextHub", data[@"firstName"]);
     } else {
-        NSLog(@"Stor: Could not update vault item %@ on ContextHub", vaultItem.fullName);
-        completionHandler (error);
+        NSLog(@"Could not delete vault item %@ on ContextHub", data[@"firstName"]);
+        NSLog(@"Error: %@", error);
     }
 }];
+```
+
+And here is what a response from create, get, and update calls looks like:
+```
+{
+    data =     {
+        firstName = Jeffrey;
+        nicknames =         (
+            Jeff,
+            Michaelangelo
+        );
+        cities = {
+            "New York City" = 1995;
+            Austin = 2004;
+            Houston = 2010;
+        };
+    };
+    "vault_info" =     {
+        "created_at" = "2014-08-07T15:55:12.747Z";
+        id = "8b253f80-449c-4588-a963-7c296a7243cd";
+        "tag_string" = "vault-tag, employee";
+        tags =         (
+            "vault-tag",
+            "employee"
+        );
+        "updated_at" = "2014-08-07T15:55:12.747Z";
+    };
+}
 ```
 
 That's it! Hopefully this sample application showed you how easy it is to work with vault items in ContextHub to easily store information accessible from all devices and context rules.

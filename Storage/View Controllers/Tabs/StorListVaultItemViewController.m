@@ -10,37 +10,38 @@
 #import <ContextHub/ContextHub.h>
 
 #import "StorVaultItem.h"
-#import "StorVaultItemStore.h"
+#import "StorConstants.h"
 
 #import "StorVaultItemCell.h"
 #import "StorEditVaultItemViewController.h"
 
 @interface StorListVaultItemViewController ()
+@property (nonatomic, strong) NSMutableArray *vaultItems;
+@property (nonatomic, strong) NSMutableArray *filteredVaultItems;
+
 @property (nonatomic, weak) StorVaultItem *selectedVaultItem;
+@property (nonatomic) BOOL verboseContextHubLogging;
 @end
 
 @implementation StorListVaultItemViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.searchDisplayController.searchResultsTableView registerClass:[StorVaultItemCell class] forCellReuseIdentifier:@"StorVaultItemCellIdentifier"];
+    
+    self.verboseContextHubLogging = YES; // Verbose logging shows all responses from ContextHub
+    self.vaultItems = [NSMutableArray array];
+    self.filteredVaultItems = [NSMutableArray array];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    // Do initial data sync
-    [[StorVaultItemStore sharedInstance] syncVaultItems];
-    
-    // Register to listen to notifications about vault item sync being completed
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncCompleted:) name:(NSString *)StorVaultItemSyncCompletedNotification object:nil];
+    [self loadVaultItems];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Actions
@@ -65,12 +66,36 @@
     [self.tableView reloadData];
 }
 
+- (void)loadVaultItems {
+    // Grab vault items from ContextHub
+    [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultItemTag] completionHandler:^(NSArray *responses, NSError *error) {
+        
+        if (!error) {
+            
+            if (self.verboseContextHubLogging) {
+                NSLog(@"Stor: [CCHVault getItemsWithTags: completionHandler:] response: %@", responses);
+            }
+            
+            [self.vaultItems removeAllObjects];
+            
+            for (NSDictionary *vaultDict in responses) {
+                StorVaultItem *vaultItem = [[StorVaultItem alloc] initWithDictionary:vaultDict];
+                [self.vaultItems addObject:vaultItem];
+            }
+            
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"Stor: Could not sync vault items with ContextHub");
+        }
+    }];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"editVaultItemSegue"]) {
         StorEditVaultItemViewController *editVC = segue.destinationViewController;
-        editVC.vaultItem = [StorVaultItemStore sharedInstance].vaultItems[[self.tableView indexPathForSelectedRow].row];
+        editVC.vaultItem = self.vaultItems[[self.tableView indexPathForSelectedRow].row];
     }
 }
 
@@ -90,14 +115,25 @@
         keyPath = @"lastName";
     }
     
-    // Find vault items with match for value at key path (for strings, this is an exact case-sensitive match)
-    [[StorVaultItemStore sharedInstance] getVaultItemsWithKeyPath:keyPath value:searchText completionHandler:^(NSError *error) {
+    [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultItemTag] keyPath:keyPath value:searchText completionHandler:^(NSArray *responses, NSError *error) {
         
         if (!error) {
+            
+            if (self.verboseContextHubLogging) {
+                NSLog(@"Stor: [CCHVault getItemsWithTags: keyPath: value: completionHandler:] response: %@", responses);
+            }
+            
+            [self.filteredVaultItems removeAllObjects];
+            
+            for (NSDictionary *vaultDict in responses) {
+                StorVaultItem *vaultItem = [[StorVaultItem alloc] initWithDictionary:vaultDict];
+                [self.filteredVaultItems addObject:vaultItem];
+            }
+            
             // Reload the table view if we get no errors
             [self.searchDisplayController.searchResultsTableView reloadData];
         } else {
-            NSLog(@"Stor: Failed to get vault items with matching value at key path");
+            NSLog(@"Stor: Could not filter vault items using ContextHub");
         }
     }];
 }
@@ -108,6 +144,11 @@
     [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     
     return NO;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    // Grab vault items from ContextHub again since some might have been deleted
+    [self loadVaultItems];
 }
 
 #pragma mark - Table View Methods
@@ -122,9 +163,9 @@
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         
-        return [StorVaultItemStore sharedInstance].filteredVaultItems.count;
+        return self.filteredVaultItems.count;
     } else {
-        return [StorVaultItemStore sharedInstance].vaultItems.count;
+        return self.vaultItems.count;
     }
 }
 
@@ -134,12 +175,9 @@
     StorVaultItem *vaultItem = nil;
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        vaultItem = [StorVaultItemStore sharedInstance].filteredVaultItems[indexPath.row];
-        
-        
-        
+        vaultItem = self.filteredVaultItems[indexPath.row];
     } else {
-        vaultItem = [StorVaultItemStore sharedInstance].vaultItems[indexPath.row];
+        vaultItem = self.vaultItems[indexPath.row];
     }
     
     cell.nameLabel.text = vaultItem.fullName;
@@ -164,20 +202,45 @@
         // Delete a vault item
         StorVaultItem *vaultItemToDelete = nil;
         if (tableView == self.searchDisplayController.searchResultsTableView) {
-            vaultItemToDelete = [StorVaultItemStore sharedInstance].filteredVaultItems[indexPath.row];
+            vaultItemToDelete = self.filteredVaultItems[indexPath.row];
+            
+            // Remove vault item from our filtered array
+            if ([self.filteredVaultItems containsObject:vaultItemToDelete]) {
+                [self.filteredVaultItems removeObject:vaultItemToDelete];
+            }
+            
+            // Remove vault item from our regular array also
+            if ([self.vaultItems containsObject:vaultItemToDelete]) {
+                [self.vaultItems removeObject:vaultItemToDelete];
+            }
         } else {
-            vaultItemToDelete = [StorVaultItemStore sharedInstance].vaultItems[indexPath.row];
+            vaultItemToDelete = self.vaultItems[indexPath.row];
+            
+            // Remove vault item from our array
+            if ([self.vaultItems containsObject:vaultItemToDelete]) {
+                [self.vaultItems removeObject:vaultItemToDelete];
+            }
         }
         
-        [[StorVaultItemStore sharedInstance] deleteVaultItem:vaultItemToDelete completionHandler:^(NSError *error) {
+        // Create the dictionary that's need to make the dictionary to delete the item in ContextHub (updating an item uses the same structure)
+        NSDictionary *data = @{@"firstName":vaultItemToDelete.firstName, @"lastName":vaultItemToDelete.lastName, @"currentPosition":vaultItemToDelete.currentPosition, @"ageInYears":[NSString stringWithFormat:@"%ld", (long)vaultItemToDelete.ageInYears], @"heightInFeet": [NSString stringWithFormat:@"%f", vaultItemToDelete.heightInFeet], @"nicknames":vaultItemToDelete.nicknames};
+        NSDictionary *vault_info = @{@"id":vaultItemToDelete.vaultID, @"created_at":[vaultItemToDelete.vaultDict valueForKeyPath:@"vault_info.created_at"], @"updated_at":[vaultItemToDelete.vaultDict valueForKeyPath:@"vault_info.updated_at"], @"tags":vaultItemToDelete.vaultTags};
+        NSDictionary *vaultItem = @{@"data":data, @"vault_info":vault_info};
+        
+        // Delete vault item from ContextHub
+        [[CCHVault sharedInstance] deleteItem:vaultItem completionHandler:^(NSDictionary *response, NSError *error) {
             
             if (!error) {
+                if (self.verboseContextHubLogging) {
+                    NSLog(@"Stor: [CCHVault deleteItem: completionHandler:] response: %@", response);
+                }
+                
                 [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 
-                // Synchronize vault items (this would not need to be done if push were enabled)
-                [[StorVaultItemStore sharedInstance] syncVaultItems];
+                NSLog(@"Stor: Successfully deleted vault item %@ on ContextHub", vaultItemToDelete.fullName);
             } else {
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error deleting vault item from ContextHub" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+                NSLog(@"Stor: Could not delete vault item %@ on ContextHub", vaultItemToDelete.fullName);
             }
             
             // Stop table editing
