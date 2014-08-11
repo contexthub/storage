@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CCHVaultItem.h"
-
 @interface StorVaultItem : NSObject
 
 @property (nonatomic, copy) NSString *firstName;
