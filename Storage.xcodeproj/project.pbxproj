@@ -197,10 +197,10 @@
 		1FDE5EBC19900BC900E0AF35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F64664A199032F50030B138 /* CoreLocation.framework */,
-				1F646648199032EE0030B138 /* MobileCoreServices.framework */,
-				1F646646199032E70030B138 /* CoreMotion.framework */,
 				1F64663C19900F110030B138 /* ContextHub.framework */,
+				1F64664A199032F50030B138 /* CoreLocation.framework */,
+				1F646646199032E70030B138 /* CoreMotion.framework */,
+				1F646648199032EE0030B138 /* MobileCoreServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
