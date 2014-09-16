@@ -161,8 +161,8 @@
 				1F64661F19900ED40030B138 /* StorAppDelegate.h */,
 				1F64662019900ED40030B138 /* StorAppDelegate.m */,
 				1F64662119900ED40030B138 /* StorConstants.h */,
-				1F64664419902D2F0030B138 /* Images.xcassets */,
 				1F64664119902CFF0030B138 /* Main.storyboard */,
+				1F64664419902D2F0030B138 /* Images.xcassets */,
 				1FC2DEA6198FF23D00DA28A9 /* Supporting Files */,
 			);
 			path = Storage;
@@ -399,7 +399,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -434,7 +434,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -453,7 +453,7 @@
 				INFOPLIST_FILE = Storage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -470,7 +470,7 @@
 				INFOPLIST_FILE = Storage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wnh-zH-Ekz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wnh-zH-Ekz">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Stor List Vault Item View Controller - Vault Items-->
+        <!--Vault Items-->
         <scene sceneID="ZOG-YV-FCX">
             <objects>
                 <tableViewController id="kp0-s6-F5L" customClass="StorListVaultItemViewController" sceneMemberID="viewController">
@@ -122,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="1242" y="660"/>
         </scene>
-        <!--Stor Edit Vault Item View Controller - New Vault Item-->
+        <!--New Vault Item-->
         <scene sceneID="Cul-rm-vjT">
             <objects>
                 <tableViewController id="Hf3-6o-N7h" customClass="StorEditVaultItemViewController" sceneMemberID="viewController">
@@ -356,7 +357,7 @@
             </objects>
             <point key="canvasLocation" x="190" y="664"/>
         </scene>
-        <!--Navigation Controller - Vault-->
+        <!--Vault-->
         <scene sceneID="ho2-AD-QJ1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="quk-7V-Icr" sceneMemberID="viewController">
@@ -378,7 +379,7 @@
             </objects>
             <point key="canvasLocation" x="716" y="664"/>
         </scene>
-        <!--Stor About Table View Controller - About-->
+        <!--About-->
         <scene sceneID="tWg-zk-E6L">
             <objects>
                 <tableViewController id="5VG-CB-vt2" customClass="StorAboutTableViewController" sceneMemberID="viewController">
@@ -424,7 +425,7 @@
             </objects>
             <point key="canvasLocation" x="1242" y="1343"/>
         </scene>
-        <!--Navigation Controller - About-->
+        <!--About-->
         <scene sceneID="fXW-9a-jkT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H97-zV-p3m" sceneMemberID="viewController">
