@@ -14,15 +14,17 @@
 
 @implementation StorAppDelegate
             
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Register with ContextHub
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 #ifdef DEBUG
-    // This tells ContextHub that you are running a debug build.
+    // The debug flag is automatically set by the compiler, indicating which push gateway server your device will use
+    // Xcode deployed builds use the sandbox/development server
+    // TestFlight/App Store builds use the production server
+    // ContextHub records which environment a device is using so push works properly
+    // This must be called BEFORE [ContextHub registerWithAppId:]
     [[ContextHub sharedInstance] setDebug:TRUE];
 #endif
     
-    //Register the app id of the application you created on https://app.contexthub.com
+    // Register the app id of the application you created on https://app.contexthub.com
     [ContextHub registerWithAppId:@"YOUR-VAULT-APP-ID-HERE"];
     
     return YES;
