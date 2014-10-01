@@ -129,6 +129,7 @@
             }
             
             NSLog(@"Stor: Successfully updated vault item %@ on ContextHub", self.vaultItem.fullName);
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
             NSLog(@"Stor: Could not update vault item %@ on ContextHub", self.vaultItem.fullName);
         }
