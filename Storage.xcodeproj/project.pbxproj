@@ -22,6 +22,7 @@
 		1F64664B199032F50030B138 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F64664A199032F50030B138 /* CoreLocation.framework */; };
 		1FC2DEA9198FF23D00DA28A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2DEA8198FF23D00DA28A9 /* main.m */; };
 		1FC2DEC0198FF23D00DA28A9 /* StorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2DEBF198FF23D00DA28A9 /* StorageTests.m */; };
+		1FF51E7719F6C0E20031F8CB /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF51E7619F6C0E20031F8CB /* Launch Screen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		1FDE5EC219900CBA00E0AF35 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1FDE5EC319900CC100E0AF35 /* release_notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = release_notes.md; sourceTree = "<group>"; };
 		1FDE5EC419900CC700E0AF35 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		1FF51E7619F6C0E20031F8CB /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				1F64662019900ED40030B138 /* StorAppDelegate.m */,
 				1F64662119900ED40030B138 /* StorConstants.h */,
 				1F64664119902CFF0030B138 /* Main.storyboard */,
+				1FF51E7619F6C0E20031F8CB /* Launch Screen.xib */,
 				1F64664419902D2F0030B138 /* Images.xcassets */,
 				1FC2DEA6198FF23D00DA28A9 /* Supporting Files */,
 			);
@@ -255,6 +258,7 @@
 				TargetAttributes = {
 					1FC2DEA2198FF23D00DA28A9 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = K83DSSAEPP;
 					};
 					1FC2DEB8198FF23D00DA28A9 = {
 						CreatedOnToolsVersion = 6.0;
@@ -288,6 +292,7 @@
 			files = (
 				1F64664319902CFF0030B138 /* Main.storyboard in Resources */,
 				1F64664519902D2F0030B138 /* Images.xcassets in Resources */,
+				1FF51E7719F6C0E20031F8CB /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Jeff/Documents/Development/ChaiOne/ContextHub/Samples/storage,
@@ -462,6 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Jeff/Documents/Development/ChaiOne/ContextHub/Samples/storage,
