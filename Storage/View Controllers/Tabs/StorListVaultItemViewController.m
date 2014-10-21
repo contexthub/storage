@@ -146,6 +146,13 @@
     return NO;
 }
 
+// Called each time scope is changed
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    return NO;
+}
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     // Grab vault items from ContextHub again since some might have been deleted
     [self loadVaultItems];

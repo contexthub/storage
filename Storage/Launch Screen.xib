@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ContextHubIcon" translatesAutoresizingMaskIntoConstraints="NO" id="8fI-ia-mVa">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ContextHubIcon" translatesAutoresizingMaskIntoConstraints="NO" id="8fI-ia-mVa">
                     <rect key="frame" x="204" y="204" width="72" height="72"/>
                 </imageView>
             </subviews>
