@@ -1,8 +1,8 @@
 # Storage (Vault) Sample App Release Notes
 ---
 
-## v1.1.3 (Build 108) - October 21, 2014
-- Update to ContextHub v1.3.3 framework
+## v1.1.3 (Build 108) - February 5, 2014
+- Update to ContextHub v1.6 framework
 - Add support for iPhone 6 and 6 Plus
 - Fix bug where changing search scope did not update search results
 

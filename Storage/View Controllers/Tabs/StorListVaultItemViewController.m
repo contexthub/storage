@@ -115,7 +115,7 @@
         keyPath = @"lastName";
     }
     
-    [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultItemTag] keyPath:keyPath value:searchText completionHandler:^(NSArray *responses, NSError *error) {
+    [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultItemTag] operator:@"ANY" keyPath:keyPath value:searchText completionHandler:^(NSArray *responses, NSError *error) {
         
         if (!error) {
             
