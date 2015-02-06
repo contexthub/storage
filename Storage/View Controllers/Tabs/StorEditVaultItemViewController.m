@@ -53,6 +53,9 @@
         self.heightLabel.text = [NSString stringWithFormat:@"%.1f", self.heightSlider.value];
     } else {
         self.title = @"New Vault Item";
+        self.ageLabel.text = [NSString stringWithFormat:@"%d", (int)self.ageSlider.value];
+        self.heightLabel.text = [NSString stringWithFormat:@"%.1f", self.heightSlider.value];
+        
         UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
         self.navigationItem.leftBarButtonItem = editButtonItem;
     }
@@ -127,6 +130,10 @@
             if (self.verboseContextHubLogging) {
                 NSLog(@"Stor: [CCHVault updateItem: completionHandler:] response: %@", response);
             }
+            
+            // New vault item has already been saved in our store so we don't need to add it
+            // Dismiss this view
+            [self.navigationController popViewControllerAnimated:YES];
             
             NSLog(@"Stor: Successfully updated vault item %@ on ContextHub", self.vaultItem.fullName);
             [self.navigationController popViewControllerAnimated:YES];

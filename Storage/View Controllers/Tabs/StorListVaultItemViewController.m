@@ -115,7 +115,7 @@
         keyPath = @"lastName";
     }
     
-    [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultItemTag] keyPath:keyPath value:searchText completionHandler:^(NSArray *responses, NSError *error) {
+    [[CCHVault sharedInstance] getItemsWithTags:@[StorVaultItemTag] operator:@"ANY" keyPath:keyPath value:searchText completionHandler:^(NSArray *responses, NSError *error) {
         
         if (!error) {
             
@@ -142,6 +142,13 @@
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    return NO;
+}
+
+// Called each time scope is changed
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     
     return NO;
 }

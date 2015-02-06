@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wnh-zH-Ekz">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wnh-zH-Ekz">
+>>>>>>> iphone-6
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Vault Items-->
@@ -33,14 +38,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHG-KE-f5S">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHG-KE-f5S">
                                             <rect key="frame" x="27" y="3" width="203" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="4x1-Cn-rhu"/>
+                                                <constraint firstAttribute="width" constant="203" id="YMP-xP-0Fm"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Position" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fi-Y1-BKu">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Position" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fi-Y1-BKu">
                                             <rect key="frame" x="27" y="24" width="203" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="203" id="AYk-Kt-I9N"/>
+                                                <constraint firstAttribute="height" constant="21" id="dh7-yy-fsb"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -55,7 +68,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asu-6x-jZ2">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asu-6x-jZ2">
                                             <rect key="frame" x="238" y="24" width="45" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="45" id="aeJ-K1-LYd"/>
@@ -65,18 +78,28 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nicknames" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65B-Dy-oYA">
-                                            <rect key="frame" x="27" y="45" width="260" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nicknames" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65B-Dy-oYA">
+                                            <rect key="frame" x="27" y="48" width="260" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="260" id="IyS-5Q-Dpo"/>
+                                                <constraint firstAttribute="height" constant="21" id="hMR-TJ-oG6"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="13"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="65B-Dy-oYA" firstAttribute="leading" secondItem="7AE-Ha-52C" secondAttribute="leadingMargin" constant="19" id="31h-Gs-pg6"/>
                                         <constraint firstAttribute="trailing" secondItem="asu-6x-jZ2" secondAttribute="trailing" constant="4" id="3xK-0T-ZO4"/>
-                                        <constraint firstItem="asu-6x-jZ2" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="top" constant="20" id="IJR-Q3-X9u"/>
+                                        <constraint firstItem="mHG-KE-f5S" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="topMargin" constant="-5" id="BlH-Hk-65F"/>
+                                        <constraint firstItem="2Fi-Y1-BKu" firstAttribute="top" secondItem="mHG-KE-f5S" secondAttribute="bottom" id="FPV-8t-b1a"/>
+                                        <constraint firstItem="mHG-KE-f5S" firstAttribute="leading" secondItem="7AE-Ha-52C" secondAttribute="leadingMargin" constant="19" id="Kmf-eb-3UQ"/>
+                                        <constraint firstItem="asu-6x-jZ2" firstAttribute="top" secondItem="qgU-nN-Rti" secondAttribute="bottom" id="RTt-io-2oy"/>
+                                        <constraint firstItem="65B-Dy-oYA" firstAttribute="top" secondItem="2Fi-Y1-BKu" secondAttribute="bottom" constant="3" id="bca-mR-Xd0"/>
                                         <constraint firstAttribute="trailing" secondItem="qgU-nN-Rti" secondAttribute="trailing" constant="4" id="lDw-0p-EJC"/>
                                         <constraint firstItem="qgU-nN-Rti" firstAttribute="top" secondItem="7AE-Ha-52C" secondAttribute="top" constant="3" id="oFl-jo-e2R"/>
+                                        <constraint firstItem="2Fi-Y1-BKu" firstAttribute="leading" secondItem="7AE-Ha-52C" secondAttribute="leadingMargin" constant="19" id="rvM-qx-MBd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -141,21 +164,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XCD-RY-hC8">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XCD-RY-hC8">
                                                     <rect key="frame" x="90" y="7" width="210" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="210" id="RgC-y1-8Ny"/>
+                                                        <constraint firstAttribute="height" constant="30" id="fEE-iq-WjP"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Hf3-6o-N7h" id="fPk-fL-Z2r"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQZ-Qb-Jwq">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQZ-Qb-Jwq">
                                                     <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="UKt-8p-3kU"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Zpx-vV-0HA"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="iQZ-Qb-Jwq" secondAttribute="centerY" constant="-0.25" id="O7a-RE-4UJ"/>
+                                                <constraint firstAttribute="centerY" secondItem="XCD-RY-hC8" secondAttribute="centerY" constant="-0.25" id="Riv-8k-uqS"/>
+                                                <constraint firstItem="XCD-RY-hC8" firstAttribute="leading" secondItem="iQZ-Qb-Jwq" secondAttribute="trailing" constant="13" id="amJ-Y9-XaQ"/>
+                                                <constraint firstAttribute="centerX" secondItem="XCD-RY-hC8" secondAttribute="centerX" constant="-35" id="kUZ-0q-4pp"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="tnE-gE-TmW">
@@ -165,21 +202,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aX7-d1-zHG">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aX7-d1-zHG">
                                                     <rect key="frame" x="90" y="7" width="210" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="210" id="Ie7-wl-9xF"/>
+                                                        <constraint firstAttribute="height" constant="30" id="pTp-K0-ALo"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Hf3-6o-N7h" id="u6a-jH-lMx"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gK5-yJ-kUK">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gK5-yJ-kUK">
                                                     <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="SX0-B5-BeJ"/>
+                                                        <constraint firstAttribute="width" constant="68" id="sSw-RK-pwu"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="aX7-d1-zHG" secondAttribute="centerX" constant="-35" id="QwM-f5-Tx2"/>
+                                                <constraint firstItem="aX7-d1-zHG" firstAttribute="leading" secondItem="gK5-yJ-kUK" secondAttribute="trailing" constant="13" id="qHT-S4-647"/>
+                                                <constraint firstItem="gK5-yJ-kUK" firstAttribute="top" secondItem="P7c-eq-W6V" secondAttribute="topMargin" constant="-1" id="t5z-Xp-XT6"/>
+                                                <constraint firstAttribute="centerY" secondItem="aX7-d1-zHG" secondAttribute="centerY" constant="-0.25" id="tcM-yJ-mrm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="7tB-lR-G4o">
@@ -189,21 +240,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current position" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8DY-kM-tHh">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Current position" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8DY-kM-tHh">
                                                     <rect key="frame" x="90" y="7" width="210" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="210" id="g3p-5l-URF"/>
+                                                        <constraint firstAttribute="height" constant="30" id="pGh-O3-0j5"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Hf3-6o-N7h" id="Vij-T9-nBp"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Job" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oau-bK-xz9">
-                                                    <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oau-bK-xz9">
+                                                    <rect key="frame" x="8" y="7" width="68" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="TQq-ZB-AYk"/>
+                                                        <constraint firstAttribute="height" constant="30" id="U74-aL-gXf"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Oau-bK-xz9" firstAttribute="top" secondItem="ay4-PE-qzI" secondAttribute="topMargin" constant="-1" id="MgW-a7-lDI"/>
+                                                <constraint firstAttribute="centerX" secondItem="8DY-kM-tHh" secondAttribute="centerX" constant="-35" id="fpT-LZ-8qO"/>
+                                                <constraint firstItem="8DY-kM-tHh" firstAttribute="leading" secondItem="Oau-bK-xz9" secondAttribute="trailing" constant="14" id="hBy-cP-tnV"/>
+                                                <constraint firstAttribute="centerY" secondItem="8DY-kM-tHh" secondAttribute="centerY" constant="-0.25" id="nr5-S1-ma6"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="hOu-Md-P0q">
@@ -213,22 +278,46 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+<<<<<<< HEAD
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ao-po-vPZ">
+=======
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ao-po-vPZ">
+>>>>>>> iphone-6
                                                     <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Oev-xe-P37"/>
+                                                        <constraint firstAttribute="width" constant="68" id="agC-7H-O5T"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="LXx-Ra-9Ky">
+                                                <slider opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="LXx-Ra-9Ky">
                                                     <rect key="frame" x="90" y="7" width="161" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="4mz-lS-Yp4"/>
+                                                        <constraint firstAttribute="width" constant="157" id="Ks3-wz-VZ2"/>
+                                                    </constraints>
                                                 </slider>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtN-G1-SbQ">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtN-G1-SbQ">
                                                     <rect key="frame" x="259" y="7" width="42" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Rew-NM-IDf"/>
+                                                        <constraint firstAttribute="width" constant="42" id="eH2-zs-c4d"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LXx-Ra-9Ky" firstAttribute="leading" secondItem="0ao-po-vPZ" secondAttribute="trailing" constant="15" id="0Ah-od-k0r"/>
+                                                <constraint firstAttribute="centerY" secondItem="LXx-Ra-9Ky" secondAttribute="centerY" constant="-0.25" id="3Rm-53-hZu"/>
+                                                <constraint firstItem="AtN-G1-SbQ" firstAttribute="leading" secondItem="LXx-Ra-9Ky" secondAttribute="trailing" constant="10" id="AyV-ZS-7Pf"/>
+                                                <constraint firstItem="AtN-G1-SbQ" firstAttribute="top" secondItem="r7E-TG-Lf0" secondAttribute="topMargin" constant="-1" id="QcY-u3-XTU"/>
+                                                <constraint firstItem="0ao-po-vPZ" firstAttribute="top" secondItem="r7E-TG-Lf0" secondAttribute="topMargin" constant="-1" id="Vzr-Ym-cGN"/>
+                                                <constraint firstAttribute="centerX" secondItem="LXx-Ra-9Ky" secondAttribute="centerX" constant="-10.5" id="gep-Mr-DoB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="2mO-nR-oO8">
@@ -238,22 +327,46 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+<<<<<<< HEAD
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL8-OP-pLx">
+=======
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL8-OP-pLx">
+>>>>>>> iphone-6
                                                     <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Epk-Ui-W3S"/>
+                                                        <constraint firstAttribute="width" constant="68" id="jCc-rF-jxR"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5.5" minValue="1" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="gb6-Xv-flD">
+                                                <slider opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5.5" minValue="1" maxValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="gb6-Xv-flD">
                                                     <rect key="frame" x="90" y="7" width="163" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="159" id="Upz-io-IZk"/>
+                                                        <constraint firstAttribute="height" constant="30" id="hYy-Db-9yw"/>
+                                                    </constraints>
                                                 </slider>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-9a-0ET">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghp-9a-0ET">
                                                     <rect key="frame" x="259" y="7" width="42" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="28P-nF-7lI"/>
+                                                        <constraint firstAttribute="height" constant="30" id="4OU-lj-jkR"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="dL8-OP-pLx" secondAttribute="centerY" constant="-0.25" id="3j6-XU-zze"/>
+                                                <constraint firstAttribute="centerY" secondItem="ghp-9a-0ET" secondAttribute="centerY" constant="-0.25" id="9c9-NJ-8Q9"/>
+                                                <constraint firstAttribute="centerX" secondItem="gb6-Xv-flD" secondAttribute="centerX" constant="-11.5" id="EfQ-5T-OVk"/>
+                                                <constraint firstItem="ghp-9a-0ET" firstAttribute="leading" secondItem="gb6-Xv-flD" secondAttribute="trailing" constant="8" id="Osq-Wu-ear"/>
+                                                <constraint firstAttribute="centerY" secondItem="gb6-Xv-flD" secondAttribute="centerY" constant="-0.25" id="Ys7-he-h4L"/>
+                                                <constraint firstItem="gb6-Xv-flD" firstAttribute="leading" secondItem="dL8-OP-pLx" secondAttribute="trailing" constant="15" id="z2N-l7-w1V"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="O1Y-yf-NyK">
@@ -263,29 +376,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sOF-9a-yxP">
-                                                    <rect key="frame" x="70" y="0.0" width="230" height="30"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="Hf3-6o-N7h" id="EgP-A4-rew"/>
-                                                    </connections>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nicknames" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXA-NK-Ueb">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nicknames" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXA-NK-Ueb">
                                                     <rect key="frame" x="90" y="7" width="210" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="210" id="4FO-zP-hIG"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Jm2-91-7gF"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Hf3-6o-N7h" id="W5a-76-WYr"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nicknames" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lHR-1L-5oM">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nicknames" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lHR-1L-5oM">
                                                     <rect key="frame" x="9" y="7" width="68" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="7iC-bu-vyJ"/>
+                                                        <constraint firstAttribute="width" constant="68" id="H1T-0T-Z9k"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="fXA-NK-Ueb" secondAttribute="centerX" constant="-35" id="1Ba-3o-9gK"/>
+                                                <constraint firstAttribute="centerY" secondItem="lHR-1L-5oM" secondAttribute="centerY" constant="-0.25" id="MDv-OE-KBQ"/>
+                                                <constraint firstItem="fXA-NK-Ueb" firstAttribute="leading" secondItem="lHR-1L-5oM" secondAttribute="trailing" constant="13" id="cgv-NR-kdV"/>
+                                                <constraint firstAttribute="centerY" secondItem="fXA-NK-Ueb" secondAttribute="centerY" constant="-0.25" id="gCQ-AF-Og2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
